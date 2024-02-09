@@ -1,0 +1,10 @@
+一、mysql的启动与停止
+   MySQL下载完成后随系统打开自动启动，而想要手动关闭则：
+   1、win+r打开控制面板，输入services.msc打开服务页面，然后下拉找到MySQL即可操作
+   2、搜索程序“命令提示符”，以管理员身份运行然后输入命令：net start mysql80（启动mysql）；net stop mysql80（停止）
+二、mysql的使用
+    打开
+    1、打开下载安装好mtsql后的应用——mysql......clint.....unicode,输入密码（输错会闪退）
+    2、配置了mysql的path环境后：可以在本机的任意目录的控制面板下（win+r cmd）输入mysql -u root -p
+三、sql讲解
+   （1）DML语句

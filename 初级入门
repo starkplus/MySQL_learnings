@@ -16,7 +16,7 @@
         删除数据库：drop database【IF exists】数据库名；
         使用数据库：use 数据库名；
       表结构操作  查询当前数据库所有表；SHOW tables；
-                 查询表结构：desc 表名；
+                 查询表结构：desc 表名；或者describe 表名
                  查询指定表的建表语句：SHOW CREATE table 表名；
                  创建表结构：crerate table 表名（
                            字段一 字段一类型【COMMENT ‘字段注释’】，

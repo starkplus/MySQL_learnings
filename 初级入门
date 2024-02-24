@@ -6,5 +6,21 @@
     打开
     1、打开下载安装好mtsql后的应用——mysql......clint.....unicode,输入密码（输错会闪退）
     2、配置了mysql的path环境后：可以在本机的任意目录的控制面板下（win+r cmd）输入mysql -u root -p
-三、sql讲解
-   （1）DML语句
+三、sql讲解（不区分大小写，以；结尾）
+   （1）DDL语句
+       数据库操作   
+        展示数据库：SHOW DATABASES;
+        查询数据库：SELECT DATABASES（）；（查询当前所处数据库）
+        创造数据库：CREATE DATABASE【IF NOT EXISTS】数据库名【default charset 字符集】
+                   举例：CREATE databases if not exists f default charset utf8（utf8是八个字节，但是汉字有很多四个字节，所以写utf8mb4更好）
+        删除数据库：drop database【IF exists】数据库名；
+        使用数据库：use 数据库名；
+      表结构操作  查询当前数据库所有表；SHOW tables；
+                 查询表结构：desc 表名；
+                 查询指定表的建表语句：SHOW CREATE table 表名；
+                 创建表结构：crerate table 表名（
+                           字段一 字段一类型【COMMENT ‘字段注释’】，
+                           字段二 字段二类型【COMMENT ‘字段注释’】        
+类型：数字类，与C相同；字符串：varchar（长度）
+                           ）
+      

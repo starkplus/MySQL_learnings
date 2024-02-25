@@ -7,15 +7,16 @@
     1、打开下载安装好mtsql后的应用——mysql......clint.....unicode,输入密码（输错会闪退）
     2、配置了mysql的path环境后：可以在本机的任意目录的控制面板下（win+r cmd）输入mysql -u root -p
 三、sql讲解（不区分大小写，以；结尾）
+变量类型：
    （1）DDL语句
-       数据库操作   
-        展示数据库：SHOW DATABASES;
-        查询数据库：SELECT DATABASES（）；（查询当前所处数据库）
-        创造数据库：CREATE DATABASE【IF NOT EXISTS】数据库名【default charset 字符集】
+   数据库操作   
+          展示数据库：SHOW DATABASES;
+          查询数据库：SELECT DATABASES（）；（查询当前所处数据库）
+          创造数据库：CREATE DATABASE【IF NOT EXISTS】数据库名【default charset 字符集】
                    举例：CREATE databases if not exists f default charset utf8（utf8是八个字节，但是汉字有很多四个字节，所以写utf8mb4更好）
-        删除数据库：drop database【IF exists】数据库名；
-        使用数据库：use 数据库名；
-      表结构操作  查询当前数据库所有表；SHOW tables；
+          删除数据库：drop database【IF exists】数据库名；
+          使用数据库：use 数据库名；
+   表结构操作  查询当前数据库所有表；SHOW tables；
                  查询表结构：desc 表名；或者describe 表名
                  查询指定表的建表语句：SHOW CREATE table 表名；
                  创建表结构：crerate table 表名（
@@ -23,4 +24,12 @@
                            字段二 字段二类型【COMMENT ‘字段注释’】        
 类型：数字类，与C相同；字符串：varchar（长度）
                            ）
-      
+   表修改操作
+          添加字段：alter table 表名 add 字段名 类型（长度）【comment ‘注释’】【约束】
+                 举例：alter table workers add nickname varchar（10） comment '昵称';
+          修改字段类型：alter table 表名 modify 字段名 新类型（长度）；
+          修改字段名称、类型和注释：alter table 表名 change 原字段名 新字段名 新字段类型（长度）【comment ‘新注释’】；
+          删除字段：alter table 表名 drop 字段名；
+          修改表名：alter table 原表名 rename to 新表名；  
+          删除表：drop table 【IF exists】 表名；
+                 truncate table 表名； 

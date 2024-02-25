@@ -34,3 +34,6 @@
           删除表： drop table 【IF exists】 表名；
                   truncate table 表名； 
   （2）DML语句 ，DML语句是对表中的数据操作的
+          添加数据 添加所需字段  insert into 表名（字段名1，字段名2，...）values（值1，值2，值3，...）；
+                  添加一整条（即所有字段）inset into 表名 values（值1，值2，值3...此处值即代表字段123）；
+                  添加多条数据  inset into 表名（字段名1，字段名2，...） 

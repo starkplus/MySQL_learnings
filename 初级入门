@@ -1,4 +1,4 @@
-一、mysql的启动与停止
+ 一、mysql的启动与停止
    MySQL下载完成后随系统打开自动启动，而想要手动关闭则：
    1、win+r打开控制面板，输入services.msc打开服务页面，然后下拉找到MySQL即可操作
    2、搜索程序“命令提示符”，以管理员身份运行然后输入命令：net start mysql80（启动mysql）；net stop mysql80（停止）
@@ -59,3 +59,12 @@
             聚合函数：count统计数量；max；min；avg平均值；sum；null值不参与所有聚合函数的运算
                               select 聚合函数 from 表名
                         举例：统计总数量：select count(*) from emp;/select count(id) from emp;
+                              条件统计统计西安所有人年龄总和          select sum(age) from emp where workplace='西安';
+             分组查询：group by   
+                        select 字段列表（即字段1、字段2...） from 表名 【where 条件】group by 分组字段名【having 分组过滤条件】
+                        举例：分男女列出男女各有几人 select gender,count(*) from emp group by gender;
+                            分男女求出男女的平均年龄：select gender,avg(age) from emp group by gender;
+                            查询年龄小于35的人，按照地址分组求人数，写出人数多余3的地址
+                                     select workplace,count(*) from emp where age <45 group by workplace having count(*)>=3;
+                                     使用别名select workplace,count(*) adress_count from emp where age <45 group by workplace having aderess_count>=3;
+                                     

@@ -8,7 +8,7 @@
     2、配置了mysql的path环境后：可以在本机的任意目录的控制面板下（win+r cmd）输入mysql -u root -p
 三、sql讲解（不区分大小写，以；结尾  【】表示可有可没有）
 变量类型：
-   （1）DDL语句
+——————————————————————————————————————————————————————   （1）DDL语句——————————————————————————————————————
    数据库操作   
           展示数据库：SHOW DATABASES;
           查询数据库：SELECT DATABASES（）；（查询当前所处数据库）
@@ -33,30 +33,30 @@
           修改表名：alter table 原表名 rename to 新表名；  
           删除表： drop table 【IF exists】 表名；
                   truncate table 表名； 
-  （2）DML语句 ，DML语句是对表中的数据操作的
+——————————————————————————————————————————  （2）DML语句 ，DML语句是对表中的数据操作的————————————————————————————————
           添加数据 添加所需字段  insert into 表名（字段名1，字段名2，...）values（值1，值2，值3，...）；
                   添加一整条（即所有字段）inset into 表名 values（值1，值2，值3...此处值即代表字段123）；
                   添加多条数据  inset into 表名（字段名1，字段名2，...） 
                   修改数据  update 表名 set 字段名=值1，字段名=值2....【where 条件】（如果不写where，那么datagrip会爆黄，此时点execute即可）
                   删除数据  delete from 表名【where 条件】（注意此时是加where则删一条数据（多字段）不加where是删整个表，与update不同）
-   （3）DQl语句，对表中的数据进行查询
-            基础查询 以【别名】返回字段select 字段1【as 别名】，字段2【as 别名】... from 表名； 
+  ——————————————————————————————————————————（3）DQl语句，对表中的数据进行查询——————————————————————————————————————————
+             基础查询 以【别名】返回字段select 字段1【as 别名】，字段2【as 别名】... from 表名； 
                      返回整个表       select *from 表名；返回整个表（显示表的内容）
                      去除重复数据     select distinct 字段列表 from 表名；
                                 举例：工作地址有三个：北京、北京、西安，用此返回北京、西安
-            条件查询 ：select 语段1 from 表名 where 条件列表；
-                      条件： 比较  < ,<=,>,>=,=,between..A.and.B..(between后跟最小值，and后跟最大值，不能反）,
+             条件查询 ：select 语段1 from 表名 where 条件列表；
+                       条件： 比较  < ,<=,>,>=,=,between..A.and.B..(between后跟最小值，and后跟最大值，不能反）,
                                   <>或！=,in(...),like 占位符(_表示单符，%表示任意),is null,
                              逻辑 and 或&&,or或||,not或!(单词对应单词，符号对应符号）
-                        举例：select * from emp where idcard Is null;
+                       举例：select * from emp where idcard Is null;
                               查空字符select * from emp where idcard Is not null;
                               select *from emp where age is 15；  X这种写法不对，数值不能用is
                               查数值范围内select * from emp where age between 15 and 20;/age>=15 && age<=20;/age>=15 and age<=20;
                               查多个数值均可select * from emp where age=18 or age =20 or age=40;/ age in(18,20,40);
-                              查字符个数select *from emp where name like '__'
+         查字符用like                     查字符个数select *from emp where name like '__'
                               查最后一个字符为特殊要求select *from emp where idcard like '%X';/like '_________________X';(17个下划线代表前面有17个字符)
              
-            聚合函数：count统计数量；max；min；avg平均值；sum；null值不参与所有聚合函数的运算
+             聚合函数：count统计数量；max；min；avg平均值；sum；null值不参与所有聚合函数的运算
                               select 聚合函数 from 表名
                         举例：统计总数量：select count(*) from emp;/select count(id) from emp;
                               条件统计统计西安所有人年龄总和          select sum(age) from emp where workplace='西安';
@@ -67,4 +67,44 @@
                             查询年龄小于35的人，按照地址分组求人数，写出人数多余3的地址
                                      select workplace,count(*) from emp where age <45 group by workplace having count(*)>=3;
                                      使用别名select workplace,count(*) adress_count from emp where age <45 group by workplace having aderess_count>=3;
-                                     
+
+              排序查询：order by 
+                         排序方式：降序desc（descend）升序asc（ascend）（默认升序）
+                         select 字段列表 from 表名 order 字段1 排序方式1，字段2 排序方式2；
+              分页查询：
+                         select 字段列表 from 表名 limit 起始索引，查询记录数；
+                       举例查询第一页，一次显示10个人：select * from emp limit 0,10；/limit 10（当第一页开始时起始索引可以不写）
+——————————————————————————————————————————————————————————————————————DQL总结————————————————————————————————————————————————————————————————————
+    条件   排序      分页
+4    select 
+          字段列表       【as 别名】
+1    from
+          表名
+2    where 
+          过滤字段条件列表如：数值运算><=，in（），between...and...
+                     逻辑：like选择字符样式
+3    group by
+           分组字段列表
+           分组后过滤字段列表【having】
+5    order by，
+           第一排序字段列表
+           第二...
+           ....
+6    limit
+           起始索引
+           每页展示记录数
+———————————————————————————————————————————————————————（4）DCL 管理用户权限————————————————————————————————————————————————
+       查询用户：use mysql；
+       select* from user；
+         |创建用户：
+         |         create user '用户名'@'主机名' identified by '密码'; 
+         |        例如：create user 'heima'@'%' identified by '密码'可以在任意主机上访问
+         |修改密码alter user '用户名'@'主机名'identified with mysql_native_password by '新密码'; 
+         |删除用户：drop user '用户名'@'主机名';
+         |权限控制： 
+  权限：all、select，
+                 显示用户所欲权限：show grants for '用户名'@'主机名';
+                 授予用户权限 grant 权限列表 on 数据库名.表名 to '用户名'@'主机名';
+                 撤销用户权限：revoke 权限列表 on 数据库名.表名 from '用户名'@'主机名';
+                 数据库名和表名都可用*来表示所有
+                 

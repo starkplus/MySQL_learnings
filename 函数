@@ -1,0 +1,11 @@
+字符串函数
+      concat（s1,s2,s3...）字符串拼接，将字符串s1...拼在一起
+      lower（str）将字符串str全部转为小写
+      upper（str）将字符串str全部转为大写
+      Lpad（str，n，pad）用字符串pad把str左边填充至总字符长度为n
+      Rpad（str，n，pad）用字符串pad把str右边边填充至总字符长度为n
+      trim（str）去掉字符串  头部  和  尾部  的空格 
+      substring（str，star，len）返回字符串从star这个位置开始的len个长度；
+           注意star 和len都是数字：
+          例如select substring（'hello mysql',3,5）显示llo m
+使用时前面加上select 不然不能执行；

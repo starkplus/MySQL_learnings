@@ -17,3 +17,31 @@
      mod（x，y）返回x/y时的余数是几；
      rand（）返回0~1之间的随机数  注：此时random（）不行，（）内写数值也不行
      round（x，y）对x进行四舍五入，保留y位小数；
+上面函数前面加select可以显示，或者跟着update更新数据，
+—————————————————————————日期函数——————————————————————
+     curdate（）；/current_date（）；
+     curtime（）；/current_time（）；
+     now（）；显示现在的日期和时间
+     year（date）；获取制定date的年份
+     month（date）；获取指定date的月份
+     DAY（date）；获取指定date的日期
+     day_add(date,interval expr type);返回一个date加上expr后的时间（type为单位，year/day/hour/minute/second）
+     datediff（date1，date2）date1可以写'2021-1-1',注意date1是靠后的时间
+————————————————————————流程函数————————————————————————
+  （1）if（value，t，f）如果value为真，则返回t（字符，可以填ok等），否则返回f（字符，可以换其他）
+  （2）ifnull（value1，value2）；如果value1不为空则返回value1，否则返回value2；
+        例如ifnull（‘’，‘edj’）；则结果为空字符
+          而ifnull（null，‘edj’）；则结果为edj
+             即空字符不是空，只有null是空
+  （3）case 
+   when【val1】 then【res1】
+   when【val2】 then【res2】
+   ...
+   else【default】
+   end；判断val几为真就返回res几
+  （4） case 【expr】
+   when【val1】 then【res1】
+   when【val2】 then【res2】
+   ...
+   else【default】
+   end；判断expr与val几相同就返回res几；

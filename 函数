@@ -21,12 +21,12 @@
 —————————————————————————日期函数——————————————————————
      curdate（）；/current_date（）；
      curtime（）；/current_time（）；
-     now（）；显示现在的日期和时间
+     now（）；显示现在的日期和时间 
      year（date）；获取制定date的年份
      month（date）；获取指定date的月份
      DAY（date）；获取指定date的日期
-     day_add(date,interval expr type);返回一个date加上expr后的时间（type为单位，year/day/hour/minute/second）
-     datediff（date1，date2）date1可以写'2021-1-1',注意date1是靠后的时间
+     date_add(date,interval expr type);返回一个date加上expr后的时间（type为单位，year/day/hour/minute/second）
+     datediff（date1，date2）date1可以写'2021-1-1',注意date1是靠后的时间，返回的是date1-date2所得的天数
 ————————————————————————流程函数————————————————————————
   （1）if（value，t，f）如果value为真，则返回t（字符，可以填ok等），否则返回f（字符，可以换其他）
   （2）ifnull（value1，value2）；如果value1不为空则返回value1，否则返回value2；

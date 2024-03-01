@@ -20,9 +20,10 @@
                  查询表结构：desc 表名；或者describe 表名
                  查询指定表的建表语句：SHOW CREATE table 表名；
                  创建表结构：crerate table 表名（
-                           字段一 字段一类型【COMMENT ‘字段注释’】，
-                           字段二 字段二类型【COMMENT ‘字段注释’】        
+                           字段一 字段一类型【约束】【COMMENT ‘字段注释’】，
+                           字段二 字段二类型【约束】【COMMENT ‘字段注释’】   
 类型：数字类，与C相同；字符串：varchar（长度）
+                  【constraint】【外键名称】foreign key（外键字段名）references 主表（主表列名）
                            ）【comment ‘表注释’】；
    表修改操作
           添加字段：alter table 表名 add 字段名 类型（长度）【comment ‘注释’】【约束】
@@ -33,6 +34,23 @@
           修改表名：alter table 原表名 rename to 新表名；  
           删除表： drop table 【IF exists】 表名；
                   truncate table 表名； 
+————————————————————————————————————————约束————————————————————————
+创建表或者修改表的时用
+可以作用于表中的字段
+    not null非空约束
+    unique 唯一约束，表名该字段中的数据都不能重复
+    primary key 主键约束，主键是一行数据的唯一标识，非空且唯一,
+               主键约束加上自动增长就不用再在创建数据时设置id值，id值会自动从1到10,但是仍然可以设置id的值
+    auto_increment 自动增长
+    default 默认约束，表明此字段没有数据的时候的默认值
+           使用方法 default'1'
+    check 检查约束 保证字段满足某一条件
+           使用方法check（）括号内写条件
+    foreign key 外键约束，是多表之间的联系，保证数据的唯一性和完整性
+   举例：
+    增加外键1创建表结构时就写上外键（已经在上面修正）
+           2alter table 表名 add constraint 外键名称 foreign key（外键字段名称）reference 主表（主表字段名）
+    删除外键alter table 表名 drop foreign key 外键名称；
 ——————————————————————————————————————————  （2）DML语句 ，DML语句是对表中的数据操作的————————————————————————————————
           添加数据 添加所需字段  insert into 表名（字段名1，字段名2，...）values（值1，值2，值3，...）；
                   添加一整条（即所有字段）inset into 表名 values（值1，值2，值3...此处值即代表字段123）；
